@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CatatanController;
+use App\Http\Controllers\Api\RencanaController;
 use App\Http\Controllers\Api\PenggunaController;
 
 /*
@@ -20,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/pengguna', PenggunaController::class);
+Route::apiResource('/rencana', RencanaController::class);
+Route::apiResource('/catatan', CatatanController::class);
