@@ -14,7 +14,7 @@ class PenggunaController extends Controller
     {
         $pengguna = Pengguna::latest()->paginate(5);
 
-        return new PenggunaResource(true, 'List Data Pengguna', $pengguna);
+        return new PenggunaResource(true, 'List Data User', $pengguna);
     }
 
     public function store(Request $request)
@@ -41,13 +41,13 @@ class PenggunaController extends Controller
         ]);
 
         //return response
-        return new PenggunaResource(true, 'Data Post Berhasil Ditambahkan!', $pengguna);
+        return new PenggunaResource(true, 'Data User Berhasil Ditambahkan!', $pengguna);
     }
 
     public function show(Pengguna $pengguna)
     {
         //return single post as a resource
-        return new PenggunaResource(true, 'Data Post Ditemukan!', $pengguna);
+        return new PenggunaResource(true, 'Data User Ditemukan!', $pengguna);
     }
 
     public function update(Request $request, Pengguna $pengguna)
@@ -66,7 +66,7 @@ class PenggunaController extends Controller
         }
 
         //return response
-        return new PenggunaResource(true, 'Data Post Berhasil Diubah!', $pengguna);
+        return new PenggunaResource(true, 'Data User Berhasil Diubah!', $pengguna);
     }
 
     public function destroy(Pengguna $pengguna)
@@ -76,6 +76,6 @@ class PenggunaController extends Controller
         $pengguna->delete();
 
         //return response
-        return new PenggunaResource(true, 'Data Post Berhasil Dihapus!', null);
+        return new PenggunaResource(true, 'Data User Berhasil Dihapus!', null);
     }
 }
