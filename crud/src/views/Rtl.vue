@@ -1,238 +1,808 @@
 <template>
   <div class="py-4 container-fluid">
-    <div class="row mb-4">
-      <div class="col-lg-12 position-relative z-index-2">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <mini-statistics-card
-              :title="{ text: 'أموال اليوم', value: '$53k' }"
-              detail="<span class='text-success text-sm font-weight-bolder'>+55%</span> من الأسبوع الماضي"
-              :icon="{
-                name: 'weekend',
-                color: 'text-white',
-                background: 'dark',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 mt-lg-0 mt-4">
-            <mini-statistics-card
-              :title="{ text: 'مستخدمو اليوم', value: '2,300' }"
-              detail="<span class='text-success text-sm font-weight-bolder'>+3%</span> من الأسبوع الماضي"
-              :icon="{
-                name: 'leaderboard',
-                color: 'text-white',
-                background: 'primary',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 mt-lg-0 mt-4">
-            <mini-statistics-card
-              :title="{ text: 'عملاء جدد', value: '34K' }"
-              detail="<span class='text-danger text-sm font-weight-bolder'>+1%</span> من الشهر الماضي"
-              :icon="{
-                name: 'store',
-                color: 'text-white',
-                background: 'success',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 mt-lg-0 mt-4">
-            <mini-statistics-card
-              :title="{ text: 'مبيعات', value: '+91' }"
-              detail="<span class='text-success text-sm font-weight-bolder'>+5%</span> مقارنة بيوم أمس"
-              :icon="{
-                name: 'weekend',
-                color: 'text-white',
-                background: 'info',
-              }"
-            />
+    <div class="row">
+      <div class="col-lg-3 col-sm-6 mb-lg-0 mb-4">
+        <mini-statistics-card
+          title="اموال اليوم"
+          value="$53,000"
+          :percentage="{
+            value: '+55%',
+            color: 'text-success',
+          }"
+          :icon="{
+            component: 'ni ni-money-coins',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-lg-0 mb-4">
+        <mini-statistics-card
+          title="مستخدمو الیوم"
+          value="2,300"
+          :percentage="{
+            value: '+3%',
+            color: 'text-success',
+          }"
+          :icon="{
+            component: 'ni ni-world',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-lg-0 mb-4">
+        <mini-statistics-card
+          title="عملاء جدد"
+          value="+3,462"
+          :percentage="{
+            value: '-2%',
+            color: 'text-danger',
+          }"
+          :icon="{
+            component: 'ni ni-paper-diploma',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <mini-statistics-card
+          title="مبیعات"
+          value="$103,430"
+          :percentage="{
+            value: '+5%',
+            color: 'text-success',
+          }"
+          :icon="{
+            component: 'ni ni-cart',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 mb-lg-0 mb-4">
+        <div class="card">
+          <div class="card-body p-3">
+            <div class="row">
+              <div class="col-lg-6 mb-lg-0 mb-4">
+                <div class="d-flex flex-column h-100">
+                  <p class="mb-1 pt-2 text-bold">بناها المطورون</p>
+                  <h5 class="font-weight-bolder">Soft UI Dashboard</h5>
+                  <p class="mb-5">
+                    من الألوان والبطاقات والطباعة إلى العناصر المعقدة ، ستجد
+                    الوثائق الكاملة.
+                  </p>
+                  <a
+                    class="text-dark font-weight-bold ps-1 mb-0 icon-move-left mt-auto"
+                    href="javascript:;"
+                  >
+                    اقرأ المستندات
+                    <i
+                      class="fas fa-arrow-left text-sm ms-1"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-4 me-auto ms-0 text-center">
+                <div
+                  class="bg-gradient-success border-radius-lg min-height-200"
+                >
+                  <img
+                    src="../assets/img/shapes/waves-white.svg"
+                    class="position-absolute h-100 top-0 d-md-block d-none"
+                    alt="waves"
+                  />
+                  <div class="position-relative pt-5 pb-4">
+                    <img
+                      class="max-width-500 w-100 position-relative z-index-2"
+                      src="../assets/img/illustrations/rocket-white.png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row mt-4">
-          <div class="col-lg-4 col-md-6 mt-4">
-            <chart-holder-card
-              title="مشاهدات الموقع"
-              subtitle="آخر أداء للحملة"
-              update="الحملة أرسلت قبل يومين"
-            >
-              <reports-bar-chart
-                :chart="{
-                  labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-                  datasets: {
-                    label: 'Sales',
-                    data: [50, 20, 10, 22, 50, 10, 40],
-                  },
-                }"
-              />
-            </chart-holder-card>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-4">
-            <chart-holder-card
-              title="Daily Sales"
-              subtitle="(<span class='font-weight-bolder'>+15%</span>) المبيعات اليومية."
-              update="تم التحديث منذ 4 دقائق"
-              color="success"
-            >
-              <reports-line-chart
-                :chart="{
-                  labels: [
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec',
-                  ],
-                  datasets: {
-                    label: 'Mobile apps',
-                    data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-                  },
-                }"
-              />
-            </chart-holder-card>
-          </div>
-          <div class="col-lg-4 mt-4">
-            <chart-holder-card
-              title="المهام المكتملة"
-              subtitle="آخر أداء للحملة"
-              update="تم تحديثه للتو"
-              color="dark"
-            >
-              <reports-line-chart
-                id="tasks-chart"
-                :chart="{
-                  labels: [
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec',
-                  ],
-                  datasets: {
-                    label: 'Mobile apps',
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                  },
-                }"
-              />
-            </chart-holder-card>
+      </div>
+      <div class="col-lg-5">
+        <div class="card h-100 p-3">
+          <div
+            class="overflow-hidden position-relative border-radius-lg bg-cover h-100"
+            style="
+              background-image: url('https://demos.creative-tim.com/soft-ui-dashboard/assets/img/ivancik.jpg');
+            "
+          >
+            <span class="mask bg-gradient-dark"></span>
+            <div class="card-body position-relative z-index-1 p-3 h-100">
+              <div class="d-flex flex-column h-100">
+                <h5 class="text-white font-weight-bolder mb-4 pt-2">
+                  العمل مع الصواريخ
+                </h5>
+                <p class="text-white mb-5">
+                  تكوين الثروة هو لعبة تطوري حديثة ذات حصيلة إيجابية. الأمر كله
+                  يتعلق بمن يغتنم الفرصة أولاً هذه بطاقة بسيطة.
+                </p>
+                <a
+                  class="text-white font-weight-bold ps-1 mb-0 icon-move-left mt-auto"
+                  href="javascript:;"
+                >
+                  اقرأ المستندات
+                  <i
+                    class="fas fa-arrow-left text-sm ms-1"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-        <project-card
-          title="المشاريع"
-          description="<i class='fa fa-check text-info' aria-hidden='true'></i> <span class='font-weight-bold ms-1'>انتهى30</span> هذا الشهر"
-          :headers="['المشروع', 'أعضاء', 'ميزانية', 'إكمال']"
-          :projects="[
-            {
-              logo: logoXD,
-              title: 'Material XD الإصدار',
-              members: [team1, team2, team3, team4],
-              budget: '$14,000',
-              progress: { percentage: 60, color: 'info' },
-            },
-            {
-              logo: logoAtlassian,
-              title: 'أضف مسار التقدم إلى التطبيق الداخلي',
-              members: [team2, team4],
-              budget: '$3,000',
-              progress: { percentage: 10, color: 'info' },
-            },
-            {
-              logo: logoSlack,
-              title: 'إصلاح أخطاء النظام الأساسي',
-              members: [team3, team1],
-              budget: 'Not set',
-              progress: { percentage: 100, color: 'success' },
-            },
-            {
-              logo: logoSpotify,
-              title: 'إطلاق تطبيق الهاتف المحمول الخاص بنا',
-              members: [team4, team3, team4, team1],
-              budget: '$20,500',
-              progress: { percentage: 100, color: 'success' },
-            },
-            {
-              logo: logoJira,
-              title: 'أضف صفحة التسعير الجديدة',
-              members: [team4],
-              budget: '$500',
-              progress: { percentage: 25, color: 'info' },
-            },
-            {
-              logo: logoJira,
-              title: 'إعادة تصميم متجر جديد على الإنترنت',
-              members: [team1, team4],
-              budget: '$2,000',
-              progress: { percentage: 40, color: 'info' },
-            },
-          ]"
+    <div class="mt-4 row">
+      <div class="col-lg-5 mb-lg-0 mb-4">
+        <div class="card">
+          <div class="card-body p-3">
+            <reports-bar-chart
+              id="chart-bar"
+              title="المستخدمين النشطين"
+              description="(<strong>+23%</strong>)  من الأسبوع الماضي"
+              :chart="{
+                labels: [
+                  'Apr',
+                  'May',
+                  'Jun',
+                  'Jul',
+                  'Aug',
+                  'Sep',
+                  'Oct',
+                  'Nov',
+                  'Dec',
+                ],
+                datasets: {
+                  label: 'Sales',
+                  data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                },
+              }"
+              :items="[
+                {
+                  icon: {
+                    color: 'primary',
+                    component: faUsers,
+                  },
+                  label: 'المستخدمون',
+                  progress: { content: '37K', percentage: 60 },
+                },
+                {
+                  icon: { color: 'info', component: faHandPointer },
+                  label: ' نقرات',
+                  progress: { content: '2m', percentage: 90 },
+                },
+                {
+                  icon: { color: 'warning', component: faCreditCard },
+                  label: 'مبيعات',
+                  progress: { content: '435$', percentage: 30 },
+                },
+                {
+                  icon: { color: 'danger', component: faScrewdriverWrench },
+                  label: 'العناصر',
+                  progress: { content: '43', percentage: 50 },
+                },
+              ]"
+            >
+            </reports-bar-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <gradient-line-chart
+          id="chart-line"
+          title="نظرة عامة على المبيعات"
+          description="<i class='fa fa-arrow-up text-success'></i>
+      <span class='font-weight-bold'>4% أكثر</span> في عام 2021"
+          :chart="{
+            labels: [
+              'Apr',
+              'May',
+              'Jun',
+              'Jul',
+              'Aug',
+              'Sep',
+              'Oct',
+              'Nov',
+              'Dec',
+            ],
+            datasets: [
+              {
+                label: 'Mobile Apps',
+                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+              },
+              {
+                label: 'Websites',
+                data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+              },
+            ],
+          }"
         />
+      </div>
+    </div>
+    <div class="mt-4 row">
+      <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+          <div class="card-header pb-0">
+            <div class="row mb-3">
+              <div class="col-6">
+                <h6>المشاريع</h6>
+                <p class="text-sm">
+                  <i class="fa fa-check text-info" aria-hidden="true"></i>
+                  <span class="font-weight-bold ms-1">30 انتهى</span> هذا الشهر
+                </p>
+              </div>
+              <div class="col-6 my-auto text-start">
+                <div class="dropdown float-start ps-4">
+                  <a
+                    class="cursor-pointer"
+                    id="dropdownTable"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i
+                      class="fa fa-ellipsis-v text-secondary"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                  <ul
+                    class="dropdown-menu px-2 py-3 me-n4"
+                    aria-labelledby="dropdownTable"
+                  >
+                    <li>
+                      <a
+                        class="dropdown-item border-radius-md"
+                        href="javascript:;"
+                        >عمل</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item border-radius-md"
+                        href="javascript:;"
+                        >عمل آخر</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item border-radius-md"
+                        href="javascript:;"
+                        >شيء آخر هنا</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0 pb-2">
+            <div class="table-responsive">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      المشروع
+                    </th>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                    >
+                      أعضاء
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      ميزانية
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      إكمال
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="../assets/img/small-logos/logo-xd.svg"
+                            class="avatar avatar-sm ms-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Soft UI XD الإصدار</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="avatar-group mt-2">
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Ryan Tompson"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-1.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Romina Hadid"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-2.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Alexander Smith"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-3.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Jessica Doe"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-4.jpg"
+                          />
+                        </a>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-xs font-weight-bold">$14,000</span>
+                    </td>
+                    <td class="align-middle">
+                      <div class="progress-wrapper w-75 mx-auto">
+                        <div class="progress-info">
+                          <div class="progress-percentage">
+                            <span class="text-xs font-weight-bold">60%</span>
+                          </div>
+                        </div>
+                        <div class="progress">
+                          <div
+                            class="progress-bar bg-gradient-info w-60"
+                            role="progressbar"
+                            aria-valuenow="60"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="../assets/img/small-logos/logo-atlassian.svg"
+                            class="avatar avatar-sm ms-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">
+                            أضف مسار التقدم إلى التطبيق الداخلي
+                          </h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="avatar-group mt-2">
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Romina Hadid"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-2.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Jessica Doe"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-4.jpg"
+                          />
+                        </a>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-xs font-weight-bold">$3,000</span>
+                    </td>
+                    <td class="align-middle">
+                      <div class="progress-wrapper w-75 mx-auto">
+                        <div class="progress-info">
+                          <div class="progress-percentage">
+                            <span class="text-xs font-weight-bold">10%</span>
+                          </div>
+                        </div>
+                        <div class="progress">
+                          <div
+                            class="progress-bar bg-gradient-info w-10"
+                            role="progressbar"
+                            aria-valuenow="10"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="../assets/img/small-logos/logo-slack.svg"
+                            class="avatar avatar-sm ms-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">
+                            إصلاح أخطاء النظام الأساسي
+                          </h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="avatar-group mt-2">
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Romina Hadid"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-3.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Jessica Doe"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-1.jpg"
+                          />
+                        </a>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-xs font-weight-bold">غير مضبوط</span>
+                    </td>
+                    <td class="align-middle">
+                      <div class="progress-wrapper w-75 mx-auto">
+                        <div class="progress-info">
+                          <div class="progress-percentage">
+                            <span class="text-xs font-weight-bold">100%</span>
+                          </div>
+                        </div>
+                        <div class="progress">
+                          <div
+                            class="progress-bar bg-gradient-success w-100"
+                            role="progressbar"
+                            aria-valuenow="100"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="../assets/img/small-logos/logo-spotify.svg"
+                            class="avatar avatar-sm ms-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">
+                            إطلاق تطبيق الهاتف المحمول الخاص بنا
+                          </h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="avatar-group mt-2">
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Ryan Tompson"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-4.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Romina Hadid"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-3.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Alexander Smith"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-4.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Jessica Doe"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-1.jpg"
+                          />
+                        </a>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-xs font-weight-bold">$20,500</span>
+                    </td>
+                    <td class="align-middle">
+                      <div class="progress-wrapper w-75 mx-auto">
+                        <div class="progress-info">
+                          <div class="progress-percentage">
+                            <span class="text-xs font-weight-bold">100%</span>
+                          </div>
+                        </div>
+                        <div class="progress">
+                          <div
+                            class="progress-bar bg-gradient-success w-100"
+                            role="progressbar"
+                            aria-valuenow="100"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="../assets/img/small-logos/logo-jira.svg"
+                            class="avatar avatar-sm ms-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">أضف صفحة التسعير الجديدة</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="avatar-group mt-2">
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Ryan Tompson"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-4.jpg"
+                          />
+                        </a>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-xs font-weight-bold">$500</span>
+                    </td>
+                    <td class="align-middle">
+                      <div class="progress-wrapper w-75 mx-auto">
+                        <div class="progress-info">
+                          <div class="progress-percentage">
+                            <span class="text-xs font-weight-bold">25%</span>
+                          </div>
+                        </div>
+                        <div class="progress">
+                          <div
+                            class="progress-bar bg-gradient-info w-25"
+                            role="progressbar"
+                            aria-valuenow="25"
+                            aria-valuemin="0"
+                            aria-valuemax="25"
+                          ></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="../assets/img/small-logos/logo-invision.svg"
+                            class="avatar avatar-sm ms-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">
+                            إعادة تصميم متجر جديد على الإنترنت
+                          </h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="avatar-group mt-2">
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Ryan Tompson"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-1.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title
+                          data-bs-original-title="Jessica Doe"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="../assets/img/team-4.jpg"
+                          />
+                        </a>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-xs font-weight-bold">$2,000</span>
+                    </td>
+                    <td class="align-middle">
+                      <div class="progress-wrapper w-75 mx-auto">
+                        <div class="progress-info">
+                          <div class="progress-percentage">
+                            <span class="text-xs font-weight-bold">40%</span>
+                          </div>
+                        </div>
+                        <div class="progress">
+                          <div
+                            class="progress-bar bg-gradient-info w-40"
+                            role="progressbar"
+                            aria-valuenow="40"
+                            aria-valuemin="0"
+                            aria-valuemax="40"
+                          ></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <timeline-list
           class="h-100"
           title="نظرة عامة على الطلبات"
-          description="<i class='material-icons text-sm text-success' aria-hidden='true'>north</i>
-        <span class='font-weight-bold'>24%</span>هذا الشهر"
+          description="<i class='fa fa-arrow-up text-success' aria-hidden='true'></i>
+        <span class='font-weight-bold'>24%</span> هذا الشهر"
         >
           <timeline-item
-            :icon="{
-              component: 'notifications',
-              class: 'text-success',
-            }"
-            title="$2400, تغييرات في التصميم"
-            date-time="22 ديسمبر 7:20 مساءً"
+            color="success"
+            icon="bell-55"
+            title=" $2400, تغييرات في التصميم"
+            date-time="22 DEC 7:20 PM"
           />
           <TimelineItem
-            :icon="{
-              component: 'code',
-              class: 'text-danger',
-            }"
-            title="طلب جديد # 1832412"
-            date-time="21 ديسمبر 11 م"
+            color="danger"
+            icon="html5"
+            title="طلب جديد #1832412"
+            date-time="21 DEC 11 PM"
           />
           <TimelineItem
-            :icon="{
-              component: 'shopping_cart',
-              class: 'text-info',
-            }"
+            color="info"
+            icon="cart"
             title="مدفوعات الخادم لشهر أبريل"
-            date-time="21 ديسمبر 9:34 مساءً"
+            date-time="21 DEC 9:34 PM"
           />
           <TimelineItem
-            :icon="{
-              component: 'credit_card',
-              class: 'text-warning',
-            }"
-            title="تمت إضافة بطاقة جديدة للأمر رقم 4395133"
-            date-time="20 ديسمبر 2:20 صباحًا"
+            color="warning"
+            icon="credit-card"
+            title="تمت إضافة بطاقة جديدة للطلب #4395133"
+            date-time="20 DEC 2:20 AM"
           />
           <TimelineItem
-            :icon="{
-              component: 'vpn_key',
-              class: 'text-primary',
-            }"
+            color="primary"
+            icon="key-25"
             title="فتح الحزم من أجل التطوير"
-            date-time="18 ديسمبر ، 4:54 صباحًا"
+            date-time="18 DEC 4:54 AM"
           />
           <TimelineItem
-            :icon="{
-              component: 'bug_report',
-              class: 'text-dark',
-            }"
-            title="طلب جديد # 9583120"
-            date-time="17 ديسمبر"
+            color="dark"
+            icon="ni ni-money-coins"
+            title="طلب جديد #9583120"
+            date-time="15 DEC"
           />
         </timeline-list>
       </div>
@@ -241,48 +811,40 @@
 </template>
 
 <script>
-import ChartHolderCard from "./components/ChartHolderCard.vue";
-import ReportsBarChart from "@/examples/Charts/ReportsBarChart.vue";
-import ReportsLineChart from "@/examples/Charts/ReportsLineChart.vue";
-import MiniStatisticsCard from "./components/MiniStatisticsCard.vue";
-import ProjectCard from "./components/ProjectCard.vue";
-import TimelineList from "@/examples/Cards/TimelineList.vue";
-import TimelineItem from "@/examples/Cards/TimelineItem.vue";
-import logoXD from "@/assets/img/small-logos/logo-xd.svg";
-import logoAtlassian from "@/assets/img/small-logos/logo-atlassian.svg";
-import logoSlack from "@/assets/img/small-logos/logo-slack.svg";
-import logoSpotify from "@/assets/img/small-logos/logo-spotify.svg";
-import logoJira from "@/assets/img/small-logos/logo-jira.svg";
-import logoInvision from "@/assets/img/small-logos/logo-invision.svg";
-import team1 from "@/assets/img/team-1.jpg";
-import team2 from "@/assets/img/team-2.jpg";
-import team3 from "@/assets/img/team-3.jpg";
-import team4 from "@/assets/img/team-4.jpg";
+import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
+import ReportsBarChart from "@/examples/Charts/ReportsBarChart";
+import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
+import TimelineList from "./components/TimelineList.vue";
+import TimelineItem from "./components/TimelineItem.vue";
+
+import setTooltip from "@/assets/js/tooltip.js";
+import {
+  faHandPointer,
+  faUsers,
+  faCreditCard,
+  faScrewdriverWrench,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default {
-  name: "RTL",
+  name: "rtl-page",
+  data() {
+    return {
+      iconBackground: "bg-gradient-success",
+      faHandPointer,
+      faUsers,
+      faCreditCard,
+      faScrewdriverWrench,
+    };
+  },
   components: {
-    ChartHolderCard,
-    ReportsBarChart,
-    ReportsLineChart,
     MiniStatisticsCard,
-    ProjectCard,
+    ReportsBarChart,
+    GradientLineChart,
     TimelineList,
     TimelineItem,
   },
-  data() {
-    return {
-      logoXD,
-      team1,
-      team2,
-      team3,
-      team4,
-      logoAtlassian,
-      logoSlack,
-      logoSpotify,
-      logoJira,
-      logoInvision,
-    };
+  mounted() {
+    setTooltip();
   },
   beforeMount() {
     this.$store.state.isRTL = true;

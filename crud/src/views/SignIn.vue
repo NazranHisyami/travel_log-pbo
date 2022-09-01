@@ -1,168 +1,120 @@
 <template>
-  <navbar btnBackground="bg-gradient-success" />
-  <div
-    class="page-header align-items-start min-vh-100"
-    style="
-      background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');
-    "
-  >
-    <span class="mask bg-gradient-dark opacity-6"></span>
-    <div class="container my-auto">
-      <div class="row">
-        <div class="col-lg-4 col-md-8 col-12 mx-auto">
-          <div class="card z-index-0 fadeIn3 fadeInBottom">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div
-                class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1"
-              >
-                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
-                  Sign in
-                </h4>
-                <div class="row mt-3">
-                  <div class="col-2 text-center ms-auto">
-                    <a class="btn btn-link px-3" href="javascript:;">
-                      <i class="fab fa-facebook text-white text-lg"></i>
-                    </a>
-                  </div>
-                  <div class="col-2 text-center px-1">
-                    <a class="btn btn-link px-3" href="javascript:;">
-                      <i class="fab fa-github text-white text-lg"></i>
-                    </a>
-                  </div>
-                  <div class="col-2 text-center me-auto">
-                    <a class="btn btn-link px-3" href="javascript:;">
-                      <i class="fab fa-google text-white text-lg"></i>
-                    </a>
-                  </div>
+  <div class="container top-0 position-sticky z-index-sticky">
+    <div class="row">
+      <div class="col-12">
+        <navbar
+          is-blur="blur blur-rounded my-3 py-2 start-0 end-0 mx-4 shadow"
+          btn-background="bg-gradient-success"
+          :dark-mode="true"
+        />
+      </div>
+    </div>
+  </div>
+  <main class="mt-0 main-content main-content-bg">
+    <section>
+      <div class="page-header min-vh-75">
+        <div class="container">
+          <div class="row">
+            <div class="mx-auto col-xl-4 col-lg-5 col-md-6 d-flex flex-column">
+              <div class="mt-8 card card-plain">
+                <div class="pb-0 card-header text-start">
+                  <h3 class="font-weight-bolder text-success text-gradient">
+                    Welcome back
+                  </h3>
+                  <p class="mb-0">Enter your email and password to sign in</p>
+                </div>
+                <div class="card-body">
+                  <form role="form" class="text-start">
+                    <label>Email</label>
+                    <soft-input
+                      id="email"
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                    />
+                    <label>Password</label>
+                    <soft-input
+                      id="password"
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                    />
+                    <soft-switch id="rememberMe" name="rememberMe" checked>
+                      Remember me
+                    </soft-switch>
+                    <div class="text-center">
+                      <soft-button
+                        class="my-4 mb-2"
+                        variant="gradient"
+                        color="success"
+                        full-width
+                        >Sign in
+                      </soft-button>
+                    </div>
+                  </form>
+                </div>
+                <div class="px-1 pt-0 text-center card-footer px-lg-2">
+                  <p class="mx-auto mb-4 text-sm">
+                    Don't have an account?
+                    <router-link
+                      :to="{ name: 'Sign Up' }"
+                      class="text-success text-gradient font-weight-bold"
+                      >Sign up</router-link
+                    >
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="card-body">
-              <form role="form" class="text-start mt-3">
-                <div class="mb-3">
-                  <material-input
-                    id="email"
-                    type="email"
-                    label="Email"
-                    name="email"
-                  />
-                </div>
-                <div class="mb-3">
-                  <material-input
-                    id="password"
-                    type="password"
-                    label="Password"
-                    name="password"
-                  />
-                </div>
-                <material-switch id="rememberMe" name="rememberMe"
-                  >Remember me</material-switch
-                >
-                <div class="text-center">
-                  <material-button
-                    class="my-4 mb-2"
-                    variant="gradient"
-                    color="success"
-                    fullWidth
-                    >Sign in</material-button
-                  >
-                </div>
-                <p class="mt-4 text-sm text-center">
-                  Don't have an account?
-                  <router-link
-                    :to="{ name: 'SignUp' }"
-                    class="text-success text-gradient font-weight-bold"
-                    >Sign up</router-link
-                  >
-                </p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer class="footer position-absolute bottom-2 py-2 w-100">
-      <div class="container">
-        <div class="row align-items-center justify-content-lg-between">
-          <div class="col-12 col-md-6 my-auto">
-            <div class="copyright text-center text-sm text-white text-lg-start">
-              © {{ new Date().getFullYear() }}, made with
-              <i class="fa fa-heart" aria-hidden="true"></i> by
-              <a
-                href="https://www.creative-tim.com"
-                class="font-weight-bold text-white"
-                target="_blank"
-                >Creative Tim</a
+            <div class="col-md-6">
+              <div
+                class="top-0 oblique position-absolute h-100 d-md-block d-none me-n8"
               >
-              for a better web.
+                <div
+                  class="bg-cover oblique-image position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
+                  :style="{
+                    backgroundImage:
+                      'url(' +
+                      require('@/assets/img/curved-images/curved9.jpg') +
+                      ')',
+                  }"
+                ></div>
+              </div>
             </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <ul
-              class="nav nav-footer justify-content-center justify-content-lg-end"
-            >
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com"
-                  class="nav-link text-white"
-                  target="_blank"
-                  >Creative Tim</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/presentation"
-                  class="nav-link text-white"
-                  target="_blank"
-                  >About Us</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/blog"
-                  class="nav-link text-white"
-                  target="_blank"
-                  >Blog</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/license"
-                  class="nav-link pe-0 text-white"
-                  target="_blank"
-                  >License</a
-                >
-              </li>
-            </ul>
           </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+  </main>
+  <app-footer />
 </template>
 
 <script>
 import Navbar from "@/examples/PageLayout/Navbar.vue";
-import MaterialInput from "@/components/MaterialInput.vue";
-import MaterialSwitch from "@/components/MaterialSwitch.vue";
-import MaterialButton from "@/components/MaterialButton.vue";
+import AppFooter from "@/examples/PageLayout/Footer.vue";
+import SoftInput from "@/components/SoftInput.vue";
+import SoftSwitch from "@/components/SoftSwitch.vue";
+import SoftButton from "@/components/SoftButton.vue";
+const body = document.getElementsByTagName("body")[0];
 import { mapMutations } from "vuex";
 
 export default {
-  name: "sign-in",
+  name: "SignIn",
   components: {
     Navbar,
-    MaterialInput,
-    MaterialSwitch,
-    MaterialButton,
+    AppFooter,
+    SoftInput,
+    SoftSwitch,
+    SoftButton,
   },
-  beforeMount() {
+  created() {
     this.toggleEveryDisplay();
     this.toggleHideConfig();
+    body.classList.remove("bg-gray-100");
   },
   beforeUnmount() {
     this.toggleEveryDisplay();
     this.toggleHideConfig();
+    body.classList.add("bg-gray-100");
   },
   methods: {
     ...mapMutations(["toggleEveryDisplay", "toggleHideConfig"]),

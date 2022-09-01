@@ -1,18 +1,18 @@
 <template>
-  <div class="card mt-4">
+  <div class="card h-100 mt-4">
     <div class="card-header pb-0 p-3">
       <div class="row">
         <div class="col-6 d-flex align-items-center">
           <h6 class="mb-0">Invoices</h6>
         </div>
         <div class="col-6 text-end">
-          <material-button color="primary" size="sm" variant="outline"
-            >View All</material-button
+          <soft-button color="success" size="sm" variant="outline"
+            >View All</soft-button
           >
         </div>
       </div>
     </div>
-    <div class="card-body p-3 mb-0">
+    <div class="card-body p-3 pb-0 mb-0">
       <ul class="list-group">
         <li
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
@@ -105,12 +105,12 @@
 </template>
 
 <script>
-import MaterialButton from "@/components/MaterialButton.vue";
+import SoftButton from "@/components/SoftButton.vue";
 
 export default {
-  name: "invoice-card",
+  name: "InvoiceCard",
   components: {
-    MaterialButton,
+    SoftButton,
   },
 };
 </script>

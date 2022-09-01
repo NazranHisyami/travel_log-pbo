@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Dashboard from "../views/Dashboard.vue";
-import Tables from "../views/Tables.vue";
-import Billing from "../views/Billing.vue";
-import RTL from "../views/Rtl.vue";
-import Notifications from "../views/Notifications.vue";
-import Profile from "../views/Profile.vue";
-import SignIn from "../views/SignIn.vue";
-import SignUp from "../views/SignUp.vue";
+import Dashboard from "@/views/Dashboard.vue";
+import Billing from "@/views/Billing.vue";
+import VirtualReality from "@/views/VirtualReality.vue";
+import Profile from "@/views/Profile.vue";
+import Rtl from "@/views/Rtl.vue";
+import SignIn from "@/views/SignIn.vue";
+import SignUp from "@/views/SignUp.vue";
 
 const routes = [
   {
@@ -20,9 +19,34 @@ const routes = [
     component: Dashboard,
   },
   {
-    path: "/tables",
-    name: "Tables",
-    component: Tables,
+    path: "/rencana",
+    name: "rencana.index",
+    component: () => import( /* webpackChunkName: "rencana.index" */ '@/views/rencana/Index.vue')
+  },
+  {
+    path: "/create",
+    name: "rencana.create",
+    component: () => import( /* webpackChunkName: "rencana.create" */ '@/views/rencana/Create.vue')
+  },
+  {
+    path: "/edit",
+    name: "rencana.edit",
+    component: () => import( /* webpackChunkName: "rencana.edit" */ '@/views/rencana/Edit.vue')
+  },
+  {
+    path: "/catatan",
+    name: "catatan.index",
+    component: () => import( /* webpackChunkName: "catatan.index" */ '@/views/catatan/Index.vue')
+  },
+  {
+    path: "/create",
+    name: "catatan.create",
+    component: () => import( /* webpackChunkName: "catatan.create" */ '@/views/catatan/Create.vue')
+  },
+  {
+    path: "/edit",
+    name: "catatan.edit",
+    component: () => import( /* webpackChunkName: "catatan.edit" */ '@/views/catatan/Edit.vue')
   },
   {
     path: "/billing",
@@ -30,14 +54,9 @@ const routes = [
     component: Billing,
   },
   {
-    path: "/rtl-page",
-    name: "RTL",
-    component: RTL,
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    component: Notifications,
+    path: "/virtual-reality",
+    name: "Virtual Reality",
+    component: VirtualReality,
   },
   {
     path: "/profile",
@@ -45,13 +64,18 @@ const routes = [
     component: Profile,
   },
   {
+    path: "/rtl-page",
+    name: "Rtl",
+    component: Rtl,
+  },
+  {
     path: "/sign-in",
-    name: "SignIn",
+    name: "Sign In",
     component: SignIn,
   },
   {
     path: "/sign-up",
-    name: "SignUp",
+    name: "Sign Up",
     component: SignUp,
   },
 ];
