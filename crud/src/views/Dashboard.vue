@@ -1,183 +1,240 @@
 <template>
   <div class="py-4 container-fluid">
-    <div class="row mb-4">
-      <div class="col-lg-12 position-relative z-index-2">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <mini-statistics-card
-              :title="{ text: 'Today\'s Money', value: '$53k' }"
-              detail="<span class='text-success text-sm font-weight-bolder'>+55%</span> than last week"
-              :icon="{
-                name: 'weekend',
-                color: 'text-white',
-                background: 'dark',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 mt-lg-0 mt-4">
-            <mini-statistics-card
-              :title="{ text: 'Today\'s Users', value: '2,300' }"
-              detail="<span class='text-success text-sm font-weight-bolder'>+3%</span> than last month"
-              :icon="{
-                name: 'leaderboard',
-                color: 'text-white',
-                background: 'primary',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 mt-lg-0 mt-4">
-            <mini-statistics-card
-              :title="{ text: 'New Clients', value: '3,462' }"
-              detail="<span class='text-danger text-sm font-weight-bolder'>-2%</span> than yesterday"
-              :icon="{
-                name: 'person',
-                color: 'text-white',
-                background: 'success',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 mt-lg-0 mt-4">
-            <mini-statistics-card
-              :title="{ text: 'Sales', value: '$103,430' }"
-              detail="<span class='text-success text-sm font-weight-bolder'>+5%</span> Just updated"
-              :icon="{
-                name: 'weekend',
-                color: 'text-white',
-                background: 'info',
-              }"
-            />
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <mini-statistics-card
+          title="Today's Money"
+          value="$53,000"
+          :percentage="{
+            value: '+505%',
+            color: 'text-success',
+          }"
+          :icon="{
+            component: 'ni ni-money-coins',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <mini-statistics-card
+          title="Today's Users"
+          value="2,300"
+          :percentage="{
+            value: '+3%',
+            color: 'text-success',
+          }"
+          :icon="{
+            component: ' ni ni-world',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <mini-statistics-card
+          title="New Clients"
+          value="+3,462"
+          :percentage="{
+            value: '-2%',
+            color: 'text-danger',
+          }"
+          :icon="{
+            component: 'ni ni-paper-diploma',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-xl-0">
+        <mini-statistics-card
+          title="Sales"
+          value="$103,430"
+          :percentage="{
+            value: '+5%',
+            color: 'text-success',
+          }"
+          :icon="{
+            component: 'ni ni-cart',
+            background: iconBackground,
+          }"
+          direction-reverse
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 mb-lg-0 mb-4">
+        <div class="card">
+          <div class="card-body p-3">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="d-flex flex-column h-100">
+                  <p class="mb-1 pt-2 text-bold">Built by developers</p>
+                  <h5 class="font-weight-bolder">Soft UI Dashboard</h5>
+                  <p class="mb-5">
+                    From colors, cards, typography to complex elements, you will
+                    find the full documentation.
+                  </p>
+                  <a
+                    class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
+                    href="javascript:;"
+                  >
+                    Read More
+                    <i
+                      class="fas fa-arrow-right text-sm ms-1"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
+                <div class="bg-gradient-success border-radius-lg h-100">
+                  <img
+                    src="../assets/img/shapes/waves-white.svg"
+                    class="position-absolute h-100 w-50 top-0 d-lg-block d-none"
+                    alt="waves"
+                  />
+                  <div
+                    class="position-relative d-flex align-items-center justify-content-center h-100"
+                  >
+                    <img
+                      class="w-100 position-relative z-index-2 pt-4"
+                      src="../assets/img/illustrations/rocket-white.png"
+                      alt="rocket"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row mt-4">
-          <div class="col-lg-4 col-md-6 mt-4">
-            <chart-holder-card
-              title="Website Views"
-              subtitle="Last Campaign Performance"
-              update="campaign sent 2 days ago"
-            >
-              <reports-bar-chart
-                :chart="{
-                  labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-                  datasets: {
-                    label: 'Sales',
-                    data: [50, 20, 10, 22, 50, 10, 40],
-                  },
-                }"
-              />
-            </chart-holder-card>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-4">
-            <chart-holder-card
-              title="Daily Sales"
-              subtitle="(<span class='font-weight-bolder'>+15%</span>) increase in today sales."
-              update="updated 4 min ago"
-              color="success"
-            >
-              <reports-line-chart
-                :chart="{
-                  labels: [
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec',
-                  ],
-                  datasets: {
-                    label: 'Mobile apps',
-                    data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-                  },
-                }"
-              />
-            </chart-holder-card>
-          </div>
-          <div class="col-lg-4 mt-4">
-            <chart-holder-card
-              title="Completed Tasks"
-              subtitle="Last Campaign Performance"
-              update="just updated"
-              color="dark"
-            >
-              <reports-line-chart
-                id="tasks-chart"
-                :chart="{
-                  labels: [
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec',
-                  ],
-                  datasets: {
-                    label: 'Mobile apps',
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                  },
-                }"
-              />
-            </chart-holder-card>
+      </div>
+      <div class="col-lg-5">
+        <div class="card h-100 p-3">
+          <div
+            class="overflow-hidden position-relative border-radius-lg bg-cover h-100"
+            style="
+              background-image: url('https://demos.creative-tim.com/soft-ui-dashboard/assets/img/ivancik.jpg');
+            "
+          >
+            <span class="mask bg-gradient-dark"></span>
+            <div class="card-body position-relative z-index-1 p-3 h-100">
+              <div class="d-flex flex-column h-100">
+                <h5 class="text-white font-weight-bolder mb-4 pt-2">
+                  Work with the rockets
+                </h5>
+                <p class="text-white mb-5">
+                  Wealth creation is an evolutionarily recent positive-sum game.
+                  It is all about who take the opportunity first.
+                </p>
+                <a
+                  class="text-white font-weight-bold ps-1 mb-0 icon-move-left mt-auto"
+                  href="javascript:;"
+                >
+                  Read more
+                  <i
+                    class="fas fa-arrow-right text-sm ms-1"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row">
+    <div class="mt-4 row">
+      <div class="mb-4 col-lg-5 mb-lg-0">
+        <div class="card z-index-2">
+          <div class="p-3 card-body">
+            <reports-bar-chart
+              id="chart-bar"
+              title="active Users"
+              description="(<strong>+23%</strong>) than last week"
+              :chart="{
+                labels: [
+                  'Apr',
+                  'May',
+                  'Jun',
+                  'Jul',
+                  'Aug',
+                  'Sep',
+                  'Oct',
+                  'Nov',
+                  'Dec',
+                ],
+                datasets: {
+                  label: 'Sales',
+                  data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                },
+              }"
+              :items="[
+                {
+                  icon: {
+                    color: 'primary',
+                    component: faUsers,
+                  },
+                  label: 'users',
+                  progress: { content: '37K', percentage: 60 },
+                },
+                {
+                  icon: { color: 'info', component: faHandPointer },
+                  label: 'clicks',
+                  progress: { content: '2m', percentage: 90 },
+                },
+                {
+                  icon: { color: 'warning', component: faCreditCard },
+                  label: 'Sales',
+                  progress: { content: '435$', percentage: 30 },
+                },
+                {
+                  icon: { color: 'danger', component: faScrewdriverWrench },
+                  label: 'Items',
+                  progress: { content: '43', percentage: 50 },
+                },
+              ]"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <!-- line chart -->
+        <div class="card z-index-2">
+          <gradient-line-chart
+            id="chart-line"
+            title="Gradient Line Chart"
+            description="<i class='fa fa-arrow-up text-success'></i>
+      <span class='font-weight-bold'>4% more</span> in 2021"
+            :chart="{
+              labels: [
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec',
+              ],
+              datasets: [
+                {
+                  label: 'Mobile Apps',
+                  data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                },
+                {
+                  label: 'Websites',
+                  data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+                },
+              ],
+            }"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row my-4">
       <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-        <project-card
-          title="Projects"
-          description="<i class='fa fa-check text-info' aria-hidden='true'></i> <span class='font-weight-bold ms-1'>30 done</span> this month"
-          :headers="['Companies', 'Members', 'Budget', 'Progress']"
-          :projects="[
-            {
-              logo: logoXD,
-              title: 'Material XD Material XD Version',
-              members: [team1, team2, team3, team4],
-              budget: '$14,000',
-              progress: { percentage: 60, color: 'info' },
-            },
-            {
-              logo: logoAtlassian,
-              title: 'Add Progress Track',
-              members: [team2, team4],
-              budget: '$3,000',
-              progress: { percentage: 10, color: 'info' },
-            },
-            {
-              logo: logoSlack,
-              title: 'Fix Platform Errors',
-              members: [team3, team1],
-              budget: 'Not set',
-              progress: { percentage: 100, color: 'success' },
-            },
-            {
-              logo: logoSpotify,
-              title: 'Launch our Mobile App',
-              members: [team4, team3, team4, team1],
-              budget: '$20,500',
-              progress: { percentage: 100, color: 'success' },
-            },
-            {
-              logo: logoJira,
-              title: 'Add the New Pricing Page',
-              members: [team4],
-              budget: '$500',
-              progress: { percentage: 25, color: 'info' },
-            },
-            {
-              logo: logoJira,
-              title: 'Redesign New Online Shop',
-              members: [team1, team4],
-              budget: '$2,000',
-              progress: { percentage: 40, color: 'info' },
-            },
-          ]"
-        />
+        <projects-card />
       </div>
       <div class="col-lg-4 col-md-6">
         <timeline-list
@@ -187,45 +244,40 @@
         <span class='font-weight-bold'>24%</span> this month"
         >
           <timeline-item
-            :icon="{
-              component: 'notifications',
-              class: 'text-success',
-            }"
+            color="success"
+            icon="bell-55"
             title="$2400 Design changes"
             date-time="22 DEC 7:20 PM"
           />
           <TimelineItem
-            :icon="{
-              component: 'code',
-              class: 'text-danger',
-            }"
+            color="danger"
+            icon="html5"
             title="New order #1832412"
             date-time="21 DEC 11 PM"
           />
           <TimelineItem
-            :icon="{
-              component: 'shopping_cart',
-              class: 'text-info',
-            }"
+            color="info"
+            icon="cart"
             title="Server payments for April"
             date-time="21 DEC 9:34 PM"
           />
           <TimelineItem
-            :icon="{
-              component: 'credit_card',
-              class: 'text-warning',
-            }"
+            color="warning"
+            icon="credit-card"
             title="New card added for order #4395133"
             date-time="20 DEC 2:20 AM"
           />
           <TimelineItem
-            :icon="{
-              component: 'vpn_key',
-              class: 'text-primary',
-            }"
+            color="primary"
+            icon="key-25"
             title="Unlock packages for development"
             date-time="18 DEC 4:54 AM"
-            class="pb-1"
+          />
+          <TimelineItem
+            color="info"
+            icon="check-bold"
+            title="Notifications unread"
+            date-time="15 DEC"
           />
         </timeline-list>
       </div>
@@ -233,45 +285,68 @@
   </div>
 </template>
 <script>
-import ChartHolderCard from "./components/ChartHolderCard.vue";
+import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
 import ReportsBarChart from "@/examples/Charts/ReportsBarChart.vue";
-import ReportsLineChart from "@/examples/Charts/ReportsLineChart.vue";
-import MiniStatisticsCard from "./components/MiniStatisticsCard.vue";
-import ProjectCard from "./components/ProjectCard.vue";
-import TimelineList from "@/examples/Cards/TimelineList.vue";
-import TimelineItem from "@/examples/Cards/TimelineItem.vue";
-import logoXD from "@/assets/img/small-logos/logo-xd.svg";
-import logoAtlassian from "@/assets/img/small-logos/logo-atlassian.svg";
-import logoSlack from "@/assets/img/small-logos/logo-slack.svg";
-import logoSpotify from "@/assets/img/small-logos/logo-spotify.svg";
-import logoJira from "@/assets/img/small-logos/logo-jira.svg";
-import logoInvision from "@/assets/img/small-logos/logo-invision.svg";
-import team1 from "@/assets/img/team-1.jpg";
-import team2 from "@/assets/img/team-2.jpg";
-import team3 from "@/assets/img/team-3.jpg";
-import team4 from "@/assets/img/team-4.jpg";
+import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
+import TimelineList from "./components/TimelineList.vue";
+import TimelineItem from "./components/TimelineItem.vue";
+import ProjectsCard from "./components/ProjectsCard.vue";
+import US from "../assets/img/icons/flags/US.png";
+import DE from "../assets/img/icons/flags/DE.png";
+import GB from "../assets/img/icons/flags/GB.png";
+import BR from "../assets/img/icons/flags/BR.png";
+import {
+  faHandPointer,
+  faUsers,
+  faCreditCard,
+  faScrewdriverWrench,
+} from "@fortawesome/free-solid-svg-icons";
 export default {
   name: "dashboard-default",
   data() {
     return {
-      logoXD,
-      team1,
-      team2,
-      team3,
-      team4,
-      logoAtlassian,
-      logoSlack,
-      logoSpotify,
-      logoJira,
-      logoInvision,
+      iconBackground: "bg-gradient-success",
+      faCreditCard,
+      faScrewdriverWrench,
+      faUsers,
+      faHandPointer,
+      sales: {
+        us: {
+          country: "United States",
+          sales: 2500,
+          value: "$230,900",
+          bounce: "29.9%",
+          flag: US,
+        },
+        germany: {
+          country: "Germany",
+          sales: "3.900",
+          value: "$440,000",
+          bounce: "40.22%",
+          flag: DE,
+        },
+        britain: {
+          country: "Great Britain",
+          sales: "1.400",
+          value: "$190,700",
+          bounce: "23.44%",
+          flag: GB,
+        },
+        brasil: {
+          country: "Brasil",
+          sales: "562",
+          value: "$143,960",
+          bounce: "32.14%",
+          flag: BR,
+        },
+      },
     };
   },
   components: {
-    ChartHolderCard,
-    ReportsBarChart,
-    ReportsLineChart,
     MiniStatisticsCard,
-    ProjectCard,
+    ReportsBarChart,
+    GradientLineChart,
+    ProjectsCard,
     TimelineList,
     TimelineItem,
   },

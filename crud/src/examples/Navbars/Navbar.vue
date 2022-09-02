@@ -4,38 +4,53 @@
     v-bind="$attrs"
     id="navbarBlur"
     data-scroll="true"
-    :class="isAbsolute ? 'mt-4' : 'mt-0'"
   >
     <div class="px-3 py-1 container-fluid">
-      <breadcrumbs :currentPage="currentRouteName" :color="color" />
+      <breadcrumbs :currentPage="currentRouteName" :textWhite="textWhite" />
       <div
         class="mt-2 collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4"
-        :class="isRTL ? 'px-0' : 'me-sm-4'"
+        :class="this.$store.state.isRTL ? 'px-0' : 'me-sm-4'"
         id="navbar"
       >
         <div
           class="pe-md-3 d-flex align-items-center"
-          :class="isRTL ? 'me-md-auto' : 'ms-md-auto'"
+          :class="this.$store.state.isRTL ? 'me-md-auto' : 'ms-md-auto'"
         >
-          <material-input id="search" label="Search here" />
+          <div class="input-group">
+            <span class="input-group-text text-body"
+              ><i class="fas fa-search" aria-hidden="true"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control"
+              :placeholder="
+                this.$store.state.isRTL ? 'أكتب هنا...' : 'Type here...'
+              "
+            />
+          </div>
         </div>
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <router-link
-              :to="{ name: 'SignIn' }"
-              class="px-0 nav-link font-weight-bold lh-1"
-              :class="color ? color : 'text-body'"
+              :to="{ name: 'Sign In' }"
+              class="px-0 nav-link font-weight-bold"
+              :class="textWhite ? textWhite : 'text-body'"
             >
-              <i class="material-icons" :class="isRTL ? 'ms-sm-2' : 'me-sm-1'">
-                account_circle
-              </i>
+              <i
+                class="fa fa-user"
+                :class="this.$store.state.isRTL ? 'ms-sm-2' : 'me-sm-1'"
+              ></i>
+              <span v-if="this.$store.state.isRTL" class="d-sm-inline d-none"
+                >يسجل دخول</span
+              >
+              <span v-else class="d-sm-inline d-none">Sign In </span>
             </router-link>
           </li>
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
             <a
               href="#"
               @click="toggleSidebar"
-              class="p-0 nav-link text-body lh-1"
+              class="p-0 nav-link text-body"
               id="iconNavbarSidenav"
             >
               <div class="sidenav-toggler-inner">
@@ -47,29 +62,30 @@
           </li>
           <li class="px-3 nav-item d-flex align-items-center">
             <a
-              class="p-0 nav-link lh-1"
+              class="p-0 nav-link"
               @click="toggleConfigurator"
-              :class="color ? color : 'text-body'"
+              :class="textWhite ? textWhite : 'text-body'"
             >
-              <i class="material-icons fixed-plugin-button-nav cursor-pointer">
-                settings
-              </i>
+              <i class="cursor-pointer fa fa-cog fixed-plugin-button-nav"></i>
             </a>
           </li>
           <li
             class="nav-item dropdown d-flex align-items-center"
-            :class="isRTL ? 'ps-2' : 'pe-2'"
+            :class="this.$store.state.isRTL ? 'ps-2' : 'pe-2'"
           >
             <a
               href="#"
-              class="p-0 nav-link lh-1"
-              :class="[color ? color : 'text-body', showMenu ? 'show' : '']"
+              class="p-0 nav-link"
+              :class="[
+                textWhite ? textWhite : 'text-body',
+                showMenu ? 'show' : '',
+              ]"
               id="dropdownMenuButton"
               data-bs-toggle="dropdown"
               aria-expanded="false"
               @click="showMenu = !showMenu"
             >
-              <i class="material-icons cursor-pointer"> notifications </i>
+              <i class="cursor-pointer fa fa-bell"></i>
             </a>
             <ul
               class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4"
@@ -185,9 +201,8 @@
   </nav>
 </template>
 <script>
-import MaterialInput from "@/components/MaterialInput.vue";
 import Breadcrumbs from "../Breadcrumbs.vue";
-import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 
 export default {
   name: "navbar",
@@ -196,27 +211,40 @@ export default {
       showMenu: false,
     };
   },
-  props: ["minNav", "color"],
+  props: ["minNav", "textWhite"],
   created() {
     this.minNav;
   },
   methods: {
     ...mapMutations(["navbarMinimize", "toggleConfigurator"]),
+    ...mapActions(["toggleSidebarColor"]),
 
     toggleSidebar() {
+      this.toggleSidebarColor("bg-white");
       this.navbarMinimize();
     },
   },
   components: {
     Breadcrumbs,
-    MaterialInput,
   },
   computed: {
-    ...mapState(["isRTL", "isAbsolute"]),
-
     currentRouteName() {
       return this.$route.name;
     },
+  },
+  updated() {
+    const navbar = document.getElementById("navbarBlur");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 10 && this.$store.state.isNavFixed) {
+        navbar.classList.add("blur");
+        navbar.classList.add("position-sticky");
+        navbar.classList.add("shadow-blur");
+      } else {
+        navbar.classList.remove("blur");
+        navbar.classList.remove("position-sticky");
+        navbar.classList.remove("shadow-blur");
+      }
+    });
   },
 };
 </script>

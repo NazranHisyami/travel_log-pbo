@@ -10,78 +10,175 @@ use Illuminate\Support\Facades\Validator;
 
 class RencanaController extends Controller
 {
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index()
     {
-        //get posts
-        $Rencana = Rencana::latest()->paginate(5);
+        //get data from table posts
+        $rencanas = Rencana::latest()->get();
 
-        //return collection of posts as a resource
-        return new RencanaResource(true, 'List Data Rencana Perjalanan', $Rencana);
+        //make response JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'List Data rencana',
+            'data'    => $rencanas  
+        ], 200);
+
     }
+    
+     /**
+     * show
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function show($id)
+    {
+        //find post by ID
+        $rencana = Rencana::findOrfail($id);
 
+        //make response JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail Data rencana',
+            'data'    => $rencana 
+        ], 200);
+
+    }
+    
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function store(Request $request)
     {
-        //define validation rules
+        //set validation
         $validator = Validator::make($request->all(), [
-            'tgl_keberangkatan'     => 'required',
-            'waktu_keberangkatan'     => 'required',
-            'waktu_perjalanan'   => 'required',
-            'tujuan'   => 'required',
-            'tlp'   => 'required',
+            'tgl_keberangkatan'   => 'required',
+            'waktu_keberangkatan' => 'required',
+            'waktu_perjalanan'    => 'required',
+            'tujuan'              => 'required',
+            'tlp'                 => 'required',
         ]);
-
-        //check if validation fails
+        
+        //response error validation
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+            return response()->json($validator->errors(), 400);
         }
 
-
-        //create post
-        $Rencana = Rencana::create([
-            'tgl_keberangkatan'     => $request-> tgl_keberangkatan,
-            'waktu_keberangkatan'     => $request-> waktu_keberangkatan,
-            'waktu_perjalanan'   => $request-> waktu_perjalanan,
-            'tujuan'   => $request->tujuan,
-            'tlp'   => $request->tlp,
+        //save to database
+        $rencana = Rencana::create([
+            'tgl_keberangkatan'   => $request->tgl_keberangkatan,
+            'waktu_keberangkatan' => $request->waktu_keberangkatan,
+            'waktu_perjalanan'    => $request->waktu_perjalanan,
+            'tujuan'              => $request->tujuan,
+            'tlp'                 => $request->tlp
         ]);
 
-        //return response
-        return new RencanaResource(true, 'Data Rencana Perjalanan Berhasil Ditambahkan!', $Rencana);
-    }
+        //success save to database
+        if($rencana) {
 
-    public function show(Rencana $Rencana)
-    {
-        //return single post as a resource
-        return new RencanaResource(true, 'Data Rencana Perjalanan Ditemukan!', $Rencana);
-    }
+            return response()->json([
+                'success' => true,
+                'message' => 'rencana Created',
+                'data'    => $rencana  
+            ], 201);
 
-    public function update(Request $request, Rencana $Rencana)
+        } 
+
+        //failed save to database
+        return response()->json([
+            'success' => false,
+            'message' => 'rencana Failed to Save',
+        ], 409);
+
+    }
+    
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $rencana
+     * @return void
+     */
+    public function update(Request $request, Rencana $rencana)
     {
-        //define validation rules
+        //set validation
         $validator = Validator::make($request->all(), [
-            'tgl_keberangkatan'     => 'required',
-            'waktu_keberangkatan'   => 'required',
-            'waktu_perjalanan'   => 'required',
-            'tujuan'   => 'required',
-            'tlp'   => 'required',
+            'tgl_keberangkatan'   => 'required',
+            'waktu_keberangkatan' => 'required',
+            'waktu_perjalanan'    => 'required',
+            'tujuan'              => 'required',
+            'tlp'                 => 'required',
         ]);
-
-        //check if validation fails
+        
+        //response error validation
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+            return response()->json($validator->errors(), 400);
         }
 
-        //return response
-        return new RencanaResource(true, 'Data Rencana Perjalanan Berhasil Diubah!', $Rencana);
+        //find post by ID
+        $rencana = Rencana::findOrFail($rencana->id);
+
+        if($rencana) {
+
+            //update rencana
+            $rencana->update([
+                'tgl_keberangkatan'   => $request->tgl_keberangkatan,
+                'waktu_keberangkatan' => $request->waktu_keberangkatan,
+                'waktu_perjalanan'    => $request->waktu_perjalanan,
+                'tujuan'              => $request->tujuan,
+                'tlp'                 => $request->tlp
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'rencana Updated',
+                'data'    => $rencana  
+            ], 200);
+
+        }
+
+        //data rencana not found
+        return response()->json([
+            'success' => false,
+            'message' => 'rencana Not Found',
+        ], 404);
+
     }
-
-    public function destroy(Rencana $Rencana)
+    
+    /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function destroy($id)
     {
+        //find post by ID
+        $rencana = Rencana::findOrfail($id);
 
-        //delete Rencana
-        $Rencana->delete();
+        if($rencana) {
 
-        //return response
-        return new RencanaResource(true, 'Data Rencana Berhasil Dihapus!', null);
+            //delete rencana
+            $rencana->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'rencana Deleted',
+            ], 200);
+
+        }
+
+        //data post not found
+        return response()->json([
+            'success' => false,
+            'message' => 'rencana Not Found',
+        ], 404);
     }
 }

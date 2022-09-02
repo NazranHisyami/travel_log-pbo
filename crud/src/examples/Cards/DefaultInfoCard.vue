@@ -7,9 +7,11 @@
         "
         class="icon icon-shape icon-lg shadow text-center border-radius-lg"
       >
-        <i class="material-icons opacity-10" aria-hidden="true">{{
-          typeof icon === "string" ? icon : icon.component
-        }}</i>
+        <i
+          class="opacity-10"
+          :class="typeof icon === 'string' ? icon : icon.component"
+          aria-hidden="true"
+        ></i>
       </div>
     </div>
     <div class="p-3 pt-0 text-center card-body">

@@ -1,7 +1,7 @@
 <template>
   <div class="mb-4 col-xl-3 col-md-6 mb-xl-0">
     <div class="card card-blog card-plain">
-      <div class="card-header p-0 mt-n4 mx-3">
+      <div class="position-relative">
         <a class="shadow-xl d-block border-radius-xl">
           <img
             :src="image"
@@ -10,8 +10,8 @@
           />
         </a>
       </div>
-      <div class="p-3 card-body">
-        <p class="mb-0 text-sm text-gradient text-dark">{{ label }}</p>
+      <div class="px-1 pb-0 card-body">
+        <p class="mb-2 text-sm text-gradient text-dark">{{ label }}</p>
         <a href="javascript:;">
           <h5>{{ title }}</h5>
         </a>

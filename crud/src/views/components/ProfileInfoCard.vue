@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100">
+  <div class="card h-100">
     <div class="p-3 pb-0 card-header">
       <div class="row">
         <div class="col-md-8 d-flex align-items-center">
@@ -45,7 +45,7 @@
             class="py-0 mb-0 btn-simple ps-1 pe-2"
             :href="link"
           >
-            <i :class="`fa fa-brands ${icon}`"></i>
+            <font-awesome-icon :icon="icon" />
           </a>
         </li>
       </ul>
@@ -54,8 +54,13 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   name: "ProfileInfoCard",
+  components: {
+    FontAwesomeIcon,
+  },
   props: {
     title: {
       type: String,

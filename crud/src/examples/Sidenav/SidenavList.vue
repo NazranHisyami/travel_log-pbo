@@ -4,150 +4,178 @@
     id="sidenav-collapse-main"
   >
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="dashboard"
-          navText="Dashboard"
+      <li class="mt-3 nav-item">
+        <h6
+          class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6"
+          :class="this.$store.state.isRTL ? 'me-4' : 'ms-2'"
         >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">dashboard</i>
+          Rencana
+        </h6>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse navText="Rencana" :to="{ name: 'rencana.index' }">
+          <template #icon>
+            <shop />
           </template>
         </sidenav-collapse>
       </li>
       <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="tables"
-          navText="Tables"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">table_view</i>
+        <sidenav-collapse navText="Rencana Create" :to="{ name: 'rencana.create' }">
+          <template #icon>
+            <credit-card />
           </template>
         </sidenav-collapse>
       </li>
       <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="billing"
-          navText="Billing"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">receipt_long</i>
-          </template>
-        </sidenav-collapse>
-      </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="rtl-page"
-          navText="Rtl"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5"
-              >format_textdirection_r_to_l</i
-            >
-          </template>
-        </sidenav-collapse>
-      </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="notifications"
-          navText="Notifications"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">notifications</i>
+        <sidenav-collapse navText="Rencana Edit" :to="{ name: 'rencana.edit' }">
+          <template #icon>
+            <office />
           </template>
         </sidenav-collapse>
       </li>
       <li class="mt-3 nav-item">
         <h6
-          class="text-xs ps-4 text-uppercase font-weight-bolder text-white"
+          class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6"
           :class="this.$store.state.isRTL ? 'me-4' : 'ms-2'"
         >
-          ACCOUNT PAGES
+          Catatan
         </h6>
       </li>
       <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="profile"
-          navText="Profile"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">person</i>
+        <sidenav-collapse navText="Catatan" :to="{ name: 'catatan.index' }">
+          <template #icon>
+            <shop />
           </template>
         </sidenav-collapse>
       </li>
       <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="sign-in"
-          navText="SignIn"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">login</i>
+        <sidenav-collapse navText="Catatan Create" :to="{ name: 'catatan.create' }">
+          <template #icon>
+            <credit-card />
           </template>
         </sidenav-collapse>
       </li>
       <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="sign-up"
-          navText="SignUp"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">assignment</i>
+        <sidenav-collapse navText="Catatan Edit" :to="{ name: 'catatan.edit' }">
+          <template #icon>
+            <office />
           </template>
         </sidenav-collapse>
       </li>
+      <!-- <li class="nav-item">
+        <sidenav-collapse navText="Billing" :to="{ name: 'Billing' }">
+          <template #icon>
+            <credit-card />
+          </template>
+        </sidenav-collapse>
+      </li> -->
+
+      <!-- <li class="nav-item">
+        <sidenav-collapse
+          navText="Virtual Reality"
+          :to="{ name: 'Virtual Reality' }"
+        >
+          <template #icon>
+            <box3d />
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse navText="RTL" :to="{ name: 'Rtl' }">
+          <template #icon>
+            <settings />
+          </template>
+        </sidenav-collapse>
+      </li> -->
+      <!-- <li class="mt-3 nav-item">
+        <h6
+          class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6"
+          :class="this.$store.state.isRTL ? 'me-4' : 'ms-2'"
+        >
+          Rencana Perjalanan
+        </h6>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse navText="Profile" :to="{ name: 'Profile' }">
+          <template #icon>
+            <customer-support />
+          </template>
+        </sidenav-collapse>
+      </li> -->
+      <!-- <li class="nav-item">
+        <sidenav-collapse navText="Sign In" :to="{ name: 'Sign In' }">
+          <template #icon>
+            <document />
+          </template>
+        </sidenav-collapse>
+      </li> -->
+      <!-- <li class="nav-item">
+        <sidenav-collapse navText="Sign Up" :to="{ name: 'Sign Up' }">
+          <template #icon>
+            <spaceship />
+          </template>
+        </sidenav-collapse>
+      </li> -->
     </ul>
-    <div class="sidenav-footer position-absolute w-100 bottom-0">
-      <div class="mx-3">
-        <a
-          class="btn mt-4 w-100"
-          :class="`bg-gradient-${this.$store.state.color}`"
-          href="https://www.creative-tim.com/product/vue-material-dashboard-2-pro"
-          >Upgrade to pro</a
-        >
-      </div>
-    </div>
   </div>
+  <!-- <div class="pt-3 mx-3 mt-3 sidenav-footer">
+    <sidenav-card
+      :class="cardBg"
+      textPrimary="Need Help?"
+      textSecondary="Please check our docs"
+      route="https://www.creative-tim.com/learning-lab/vue/overview/soft-ui-dashboard/"
+      label="Documentation"
+      icon="ni ni-diamond"
+    />
+    <a
+      class="btn bg-gradient-success mt-4 w-100"
+      href="https://www.creative-tim.com/product/vue-soft-ui-dashboard-pro?ref=vsud"
+      type="button"
+      >Upgrade to pro</a
+    >
+  </div> -->
 </template>
 <script>
 import SidenavCollapse from "./SidenavCollapse.vue";
+// import SidenavCard from "./SidenavCard.vue";
+import Shop from "../../components/Icon/Shop.vue";
+import Office from "../../components/Icon/Office.vue";
+import CreditCard from "../../components/Icon/CreditCard.vue";
+// import Box3d from "../../components/Icon/Box3d.vue";
+// import CustomerSupport from "../../components/Icon/CustomerSupport.vue";
+// import Document from "../../components/Icon/Document.vue";
+// import Spaceship from "../../components/Icon/Spaceship.vue";
+// import Settings from "../../components/Icon/Settings.vue";
 
 export default {
   name: "SidenavList",
   props: {
-    cardBg: String
+    cardBg: String,
   },
   data() {
     return {
       title: "Soft UI Dashboard PRO",
       controls: "dashboardsExamples",
-      isActive: "active"
+      isActive: "active",
     };
   },
   components: {
-    SidenavCollapse
-  }
+    SidenavCollapse,
+    // SidenavCard,
+    Shop,
+    Office,
+    CreditCard,
+    // Box3d,
+    // CustomerSupport,
+    // Document,
+    // Spaceship,
+    // Settings,
+  },
+  methods: {
+    getRoute() {
+      const routeArr = this.$route.path.split("/");
+      return routeArr[1];
+    },
+  },
 };
 </script>

@@ -3,7 +3,8 @@
     <div
       class="overflow-hidden position-relative border-radius-xl"
       :style="{
-        backgroundImage: 'url(' + require('@/assets/img/curved14.jpg') + ')',
+        backgroundImage:
+          'url(' + require('@/assets/img/curved-images/curved14.jpg') + ')',
       }"
     >
       <span class="mask" :class="`bg-gradient-${card.background}`"></span>
@@ -14,7 +15,7 @@
         </h5>
         <div class="d-flex">
           <div class="d-flex">
-            <div :class="isRTL ? 'ms-4' : 'me-4'">
+            <div :class="$store.state.isRTL ? 'ms-4' : 'me-4'">
               <p class="text-white text-sm opacity-8 mb-0">
                 {{ card.holderText }}
               </p>
@@ -29,9 +30,9 @@
           </div>
           <div
             class="w-20 d-flex align-items-end justify-content-end"
-            :class="isRTL ? 'me-auto' : 'ms-auto'"
+            :class="$store.state.isRTL ? 'me-auto' : 'ms-auto'"
           >
-            <material-avatar class="w-60 mt-2" :img="img1" alt="logo" />
+            <soft-avatar class="w-60 mt-2" :img="img1" alt="logo" />
           </div>
         </div>
       </div>
@@ -40,14 +41,14 @@
 </template>
 
 <script>
-import MaterialAvatar from "@/components/MaterialAvatar.vue";
-import { mapState } from "vuex";
-import img1 from "../../assets/img/logos/mastercard.png";
+import SoftAvatar from "@/components/SoftAvatar.vue";
+import img from "@/assets/img/curved-images/curved14.jpg";
+import img1 from "@/assets/img/logos/mastercard.png";
 
 export default {
   name: "MasterCard",
   components: {
-    MaterialAvatar,
+    SoftAvatar,
   },
   props: {
     card: {
@@ -59,7 +60,7 @@ export default {
       expiryText: String,
       background: String,
       default: () => ({
-        number: "4562   1122   4594   7852",
+        number: "7852 4594 1122 4562",
         holderName: "Jack Peterson",
         expiryDate: "11/22",
         holderText: "Card Holder",
@@ -70,11 +71,9 @@ export default {
   },
   data() {
     return {
+      img,
       img1,
     };
-  },
-  computed: {
-    ...mapState(["isRTL"]),
   },
 };
 </script>
