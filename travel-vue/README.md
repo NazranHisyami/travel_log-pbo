@@ -1,4 +1,4 @@
-# crud-vue-3
+# travel-vue
 
 ## Project setup
 ```

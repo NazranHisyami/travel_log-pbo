@@ -21,6 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Route::get('/index/{id}', function ($id) {
+//     return 'penggunas'.$id;
+// });
+
 Route::apiResource('/pengguna', PenggunaController::class);
 Route::apiResource('/rencana', RencanaController::class);
 Route::apiResource('/catatan', CatatanController::class);
