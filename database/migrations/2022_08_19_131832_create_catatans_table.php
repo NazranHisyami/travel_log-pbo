@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('catatans', function (Blueprint $table) {
             $table->id();
-            $table->string("tgl_keberangkatan");
+            $table->date("tgl_keberangkatan");
             $table->time("waktu_keberangkatan");
-            $table->string("waktu_perjalanan");
+            $table->time("waktu_perjalanan");
             $table->string("tujuan");
-            $table->integer("tlp");
+            $table->string("tlp");
             $table->string("rating");
             $table->string("catatan_user");
             $table->timestamps();

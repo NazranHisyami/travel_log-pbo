@@ -1,5 +1,4 @@
 <template>
-  <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <footer class="py-5 footer">
     <div class="container">
       <div class="row">
@@ -42,7 +41,7 @@
           <a
             href="javascript:;"
             target="_blank"
-            class="mb-2 text-secondary mb-sm-0"
+            class="mb-2 text-secondary me-xl-5 me-3 mb-sm-0"
           >
             Pricing
           </a>
@@ -76,7 +75,11 @@
           >
             <span class="text-lg fab fa-pinterest"></span>
           </a>
-          <a href="javascript:;" target="_blank" class="text-secondary">
+          <a
+            href="javascript:;"
+            target="_blank"
+            class="text-secondary me-xl-4 me-4"
+          >
             <span class="text-lg fab fa-github"></span>
           </a>
         </div>
@@ -94,6 +97,6 @@
 
 <script>
 export default {
-  name: "app-footer",
+  name: "app-footer"
 };
 </script>

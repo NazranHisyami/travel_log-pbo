@@ -4,14 +4,14 @@
     class="top-0 navbar navbar-expand-lg position-absolute z-index-3"
     :class="isBlur ? isBlur : 'shadow-none my-2 navbar-transparent w-100'"
   >
-    <div class="container px-0">
+    <div class="container">
       <router-link
         class="navbar-brand font-weight-bolder ms-lg-0 ms-3"
         to="/dashboard"
         v-bind="$attrs"
         :class="isBlur ? 'text-dark' : 'text-white'"
       >
-        Material Dashboard 2
+        Soft UI Dashboard
       </router-link>
       <button
         class="navbar-toggler shadow-none ms-2"
@@ -78,8 +78,9 @@
         <ul class="navbar-nav d-lg-block d-none">
           <li class="nav-item">
             <a
-              href="https://www.creative-tim.com/product/vue-material-dashboard-2"
-              class="btn btn-sm mb-0 me-1 bg-gradient-success"
+              href="https://www.creative-tim.com/product/vue-soft-ui-dashboard"
+              class="btn btn-sm btn-round mb-0 me-1"
+              :class="isBlur ? 'bg-gradient-dark' : 'bg-gradient-success'"
               >Free download</a
             >
           </li>
